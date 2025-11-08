@@ -2,14 +2,14 @@ pipeline {
     agent any
 
     tools {
-        // Specify the JDK installation defined in Jenkins Global Tools Configuration
-        jdk 'jdk-21'
+        // Use the JDK name configured in Jenkins Global Tools Configuration
+        jdk 'Java17'
     }
 
     stages {
         stage('Checkout') {
             steps {
-                 git branch: 'main', url: 'https://github.com/mohamedalibenchiekh/java-getting-started.git'
+                git branch: 'main', url: 'https://github.com/mohamedalibenchiekh/java-getting-started.git'
             }
         }
         stage('Build') {
@@ -31,7 +31,6 @@ pipeline {
 
     post {
         always {
-            // Optionally, clean up the Maven build directory
             sh 'rm -rf target'
         }
     }
